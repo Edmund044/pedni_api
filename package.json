@@ -1,0 +1,16 @@
+{
+  "name": "quick_garage_api_2",
+  "version": "1.0.0",
+  "description": "basic crud for quick garage ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "firebase",
+    "angular",
+    "API"
+  ],
+  "author": "Edmund Opiyo",
+  "license": "ISC"
+}
