@@ -1,13 +1,13 @@
 const firebase = require('firebase');
 const firebaseConfig = {
-    apiKey: "AIzaSyALR1DkAgjaoEmak1UVAvSxkfbG4zOSjxo",
-    authDomain: "modugreens.firebaseapp.com",
-    databaseURL: "https://modugreens-default-rtdb.firebaseio.com",
-    projectId: "modugreens",
-    storageBucket: "modugreens.appspot.com",
-    messagingSenderId: "830310619902",
-    appId: "1:830310619902:web:ea0cccf4f0067d100163af",
-    measurementId: "G-TZKY211NZR"
+    apiKey: "AIzaSyB1vu0yAHISd_gE4XViUfYPwlYyb0uO9UE",
+    authDomain: "quick-garage-521f8.firebaseapp.com",
+    databaseURL: "https://quick-garage-521f8-default-rtdb.firebaseio.com",
+    projectId: "quick-garage-521f8",
+    storageBucket: "quick-garage-521f8.appspot.com",
+    messagingSenderId: "213686863596",
+    appId: "1:213686863596:web:79e85fb2e75371fe6a47c9",
+    measurementId: "G-2P2XPFDMV1"
   };
   firebase.initializeApp(firebaseConfig);  
   
