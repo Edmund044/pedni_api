@@ -5,11 +5,11 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 app.use(morgan('dev'));
 
-const  customersAuthentication = require('./routes/customer/authentication/authentication');
-const  customersHarvest = require('./routes/customer/harvest/harvest');
-const  customersCrops = require('./routes/customer/crops/crops');
-const  customersNotification = require('./routes/customer/notification/notification');
-const  customersStatistics = require('./routes/customer/statistics/statistics');
+//const  customersAuthentication = require('./routes/customer/authentication/authentication');
+//const  customersHarvest = require('./routes/customer/harvest/harvest');
+///const  customersCrops = require('./routes/customer/crops/crops');
+//const  customersNotification = require('./routes/customer/notification/notification');
+const  mechanic = require('./routes/mechanic/profile/profile');
 
 app.use(cors({ origin: true }));
 app.use(bodyParser.urlencoded({
@@ -33,12 +33,14 @@ app.use((req, res, next) => {
 
 
 //routes
+/*
 app.use("/api/customers/authenticate", customersAuthentication );
 app.use("/api/customers/harvests", customersHarvest);
 app.use("/api/customers/crops",  customersCrops);
 app.use("/api/customers/notification", customersNotification);
 app.use("/api/customers/statistics", customersStatistics);
-
+*/
+app.use("/mechanic", mechanic);
 app.get("/api/customers/cropss",(req, res, next) => {
   res.send("Hi there");
 });
