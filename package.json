@@ -4,6 +4,7 @@
   "description": "basic crud for quick garage ",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -12,5 +13,10 @@
     "API"
   ],
   "author": "Edmund Opiyo",
-  "license": "ISC"
+  "license": "ISC",
+  
+  "engines": {
+    "node": "v12.21.0",
+    "npm": "7.5.2"
+  }
 }
