@@ -43,13 +43,13 @@ app.post("/mechanics",async (req,res,next) =>{
 //update about
 
 app.put("/mechanics",async (req,res,next)=>{
-    const id = req.body.mechanic.id;
+    const id = req.body.id;
     delete req.body.id;
     const data = req.body;
     let snapshot= await db.collection("mechanics")
         .doc(id)
         .update({
-        data
+          mechanic:data      
                 })
         .then(
            (snapshot) => {
