@@ -9,8 +9,11 @@ app.use(morgan('dev'));
 //const  customersHarvest = require('./routes/customer/harvest/harvest');
 ///const  customersCrops = require('./routes/customer/crops/crops');
 //const  customersNotification = require('./routes/customer/notification/notification');
-const  mechanic = require('./routes/mechanic/profile/profile');
-
+const  mechanicProfile = require('./routes/mechanic/profile/profile');
+const  mechanicOrders = require('./routes/mechanic/orders/orders');
+const  customerOrders = require('./routes/customer/orders/orders');
+const  adminServices = require('./routes/admin/services/services');
+const  customerReviews = require('./routes/customer/reviews/reviews');
 app.use(cors({ origin: true }));
 app.use(bodyParser.urlencoded({
     extended: true
@@ -40,7 +43,11 @@ app.use("/api/customers/crops",  customersCrops);
 app.use("/api/customers/notification", customersNotification);
 app.use("/api/customers/statistics", customersStatistics);
 */
-app.use("/mechanic", mechanic);
+app.use("/mechanicProfile", mechanicProfile);
+app.use("/mechanicOrders", mechanicOrders);
+app.use("/customerOrders", customerOrders);
+app.use("/adminServices", adminServices);
+app.use("/customerReviews", customerReviews);
 app.get("/api/customers/cropss",(req, res, next) => {
   res.send("Hi there");
 });
