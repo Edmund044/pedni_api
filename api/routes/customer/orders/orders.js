@@ -65,15 +65,12 @@ app.put("/orders",async (req,res,next)=>{
 });
 
 //delete about
-app.delete("/orders",async (req,res,next) =>{
-  const id = req.body.id;
-  delete req.body.id;
-  const data = req.body;
+app.delete("/orders/:id",async (req,res,next) =>{
+  const id = req.params.id;
+  //const data = req.body;
   let snapshot= await db.collection("orders")
       .doc(id)
-      .delete({
-      data
-              })
+      .delete()
       .then(
          (snapshot) => {
            res.status(200).json({message:"Done"});
