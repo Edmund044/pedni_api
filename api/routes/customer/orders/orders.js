@@ -1,11 +1,21 @@
 const express = require('express');
 const app = express();
-
 require('dotenv').config();
 const admin = require('../../../../firebase/database');
 const db = admin.firestore();
+const geolib = require('geolib');
+//geolib
+app.post("/nearest/:current",async (req,res,next)=>{
+  const current = req.body.current;
+  const array = req.body.array;
+  res.status(200).json(  
+    geolib.findNearest(current,array)
+    ); 
+   
+  
 
 
+});
 //get about 
 app.get("/orders",async (req,res,next)=>{
   const snapshot = await db.collection("orders")
