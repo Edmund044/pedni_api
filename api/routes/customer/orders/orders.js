@@ -7,13 +7,40 @@ const geolib = require('geolib');
 //geolib
 app.post("/nearest",async (req,res,next)=>{
   const current = req.body.current;
-  const array = req.body.array;
+  const snapshot1 = await db.collection("orders")
+  .get()
+  .then( (snapshot1) => {
+    const data1 = snapshot.docs.map((doc) => ({ latitude:doc.latitude,longitude:doc.longitude })); 
+    const array = data1;   
+    console.log(data);
+  }
+  )
+  .catch( 
+    error => {
+    res.status(500).json({error:error})                   
+  });  
   nearest = geolib.findNearest(current,array);
   nearestLat = nearest.latitude;
   nearestLong = nearest.longitude;
+  console.log(nearestLat);
+  console.log(nearestLong);
   res.status(200).json(  
     geolib.findNearest(current,array)
     ); 
+    const snapshot2 = await db.collection("orders")
+                  .where("longitude", "==", nearestLong)
+                  .get()
+                  .then( (snapshot2) => {
+                    const data2 = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
+                    res.status(200).json(data2); 
+                    console.log(data2);
+                  }
+                   
+                  )
+                  .catch( 
+                    error => {
+                    res.status(500).json({error:error})                   
+                  });  
   });
 //get about 
 app.get("/orders",async (req,res,next)=>{
