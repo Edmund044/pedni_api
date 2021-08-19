@@ -7,13 +7,22 @@ const geolib = require('geolib');
 //geolib
 app.post("/nearest",async (req,res,next)=>{
   const current = req.body.current;
-  const snapshot1 = await db.collection("orders")
+  const array = [];
+  const locationId = '';
+  console.log(current);
+  const snapshot1 = await db.collection("location")
   .get()
-  .then( (snapshot1) => {
-    const data1 = snapshot.docs.map((doc) => ({ latitude:doc.latitude,longitude:doc.longitude })); 
-    const array = data1;   
-    console.log(data);
+  .then( (snapshot) => {
+    const data1 = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
+   // res.status(200).json(data1); 
+    console.log(data1);
+    for (const points of data1) {
+      array.push(points.data.location);
+    }
+    locationId = data1.id;
+   
   }
+   
   )
   .catch( 
     error => {
@@ -21,16 +30,16 @@ app.post("/nearest",async (req,res,next)=>{
   });  
   nearest = geolib.findNearest(current,array);
   nearestLat = nearest.latitude;
-  nearestLong = nearest.longitude;
-  console.log(nearestLat);
+  const nearestLong = nearest.longitude;
+  //console.log(nearestLat);
   console.log(nearestLong);
-  res.status(200).json(  
+  /*console.log(  
     geolib.findNearest(current,array)
-    ); 
-    const snapshot2 = await db.collection("orders")
-                  .where("longitude", "==", nearestLong)
+    ); */
+    const snapshot2 = await db.collection("location")
+                  .where('longitude', '==', nearestLong)
                   .get()
-                  .then( (snapshot2) => {
+                  .then( (snapshot) => {
                     const data2 = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
                     res.status(200).json(data2); 
                     console.log(data2);

@@ -11,6 +11,7 @@ app.use(morgan('dev'));
 //const  customersNotification = require('./routes/customer/notification/notification');
 const  mechanicProfile = require('./routes/mechanic/profile/profile');
 const  mechanicOrders = require('./routes/mechanic/orders/orders');
+const  mechanicLocation = require('./routes/mechanic/location/location');
 const  customerOrders = require('./routes/customer/orders/orders');
 const  adminServices = require('./routes/admin/services/services');
 const  customerReviews = require('./routes/customer/reviews/reviews');
@@ -45,6 +46,7 @@ app.use("/api/customers/statistics", customersStatistics);
 */
 app.use("/mechanicProfile", mechanicProfile);
 app.use("/mechanicOrders", mechanicOrders);
+app.use("/mechanicLocation", mechanicLocation);
 app.use("/customerOrders", customerOrders);
 app.use("/adminServices", adminServices);
 app.use("/customerReviews", customerReviews);
