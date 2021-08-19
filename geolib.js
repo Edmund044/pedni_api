@@ -1,6 +1,9 @@
 const geolib = require('geolib');
-console.log(geolib.getCenter([
-    { latitude: 52.516272, longitude: 13.377722 },
-    { latitude: 51.515, longitude: 7.453619 },
-    { latitude: 51.503333, longitude: -0.119722 },
-]));
+console.log(dist = geolib.getPreciseDistance(
+    { latitude: 51.5103, longitude: 7.49347 },
+    { latitude: 51.31, longitude: 7.28 }
+));
+console.log(dist);
+console.log(geolib.convertDistance(dist, 'km'));
+time = geolib.convertDistance(dist, 'km')/80*(60);
+console.log(time);
