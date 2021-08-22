@@ -32,7 +32,7 @@ app.get("/mechanics/:id",async (req,res,next)=>{
                   .then( (snapshot) => {
                     const data = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
                     res.status(200).json(data); 
-                    console.log(data);
+                    console.log(data.email);
                   }
                    
                   )

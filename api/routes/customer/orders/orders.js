@@ -85,7 +85,9 @@ app.post("/orders",async (req,res,next) =>{
         .add(data)
         .then(
            (snapshot) => {
-            res.status(200).json({message:"Done"});
+            //var postID = snapshot.key();
+            const id = snapshot.id;
+            res.status(200).json({"id":id,"message":"Done"});
            } 
          
         )
