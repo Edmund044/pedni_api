@@ -26,16 +26,17 @@ app.post("/nearest",async (req,res,next)=>{
     res.status(200).json(nearest);
     console.log(nearest);
       
-     /* for( coords of data1){
+     /*for( coords of data1){
       const results = coords;
       let longitude = results.data.location.longitude;
       
       if(longitude.includes(nearestLong)){
         console.log(results);
-        res.status(200).json(results);
-        //response.push(results);
+        
+        response.push(results);
       }      
   }*/
+  //res.status(200).json(response);
   }
    
   )
