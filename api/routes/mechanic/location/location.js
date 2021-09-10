@@ -32,7 +32,7 @@ app.post("/location",async (req,res,next) =>{
         .add(data)
         .then(
            (snapshot) => {
-            res.status(200).json({message:"Done"});
+            res.status(200).json({id:snapshot.id,message:"Done"});
            } 
          
         )
@@ -68,15 +68,13 @@ app.put("/location",async (req,res,next)=>{
 });
 
 //delete about
-app.delete("/location",async (req,res,next) =>{
-  const id = req.body.id;
-  delete req.body.id;
-  const data = req.body;
+app.delete("/location/:id",async (req,res,next) =>{
+  const id = req.params.id;
+  //delete req.body.id;
+ // const data = req.body;
   let snapshot= await db.collection("location")
       .doc(id)
-      .delete({
-      data
-              })
+      .delete()
       .then(
          (snapshot) => {
            res.status(200).json({message:"Done"});
