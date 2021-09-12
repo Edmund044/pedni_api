@@ -39,7 +39,7 @@ app.post("/nearest",async (req,res,next)=>{
       }      
   }
   console.log(`response:${response}`);
-  res.status(200).json(response);
+  res.status(200).json(Object.assign({}, response));
   }
    
   )
