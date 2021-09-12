@@ -15,28 +15,31 @@ app.post("/nearest",async (req,res,next)=>{
   .then( (snapshot) => {
     const data1 = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
    // res.status(200).json(data1); 
-    
+    // console.log(data1);
     for (const points of data1) {
       array.push(points.data.location);
     }
   //  res.status(200).json(array);
    nearest = geolib.findNearest(current,array);
-   // const nearestLat = nearest.latitude;
-    //const nearestLong = nearest.longitude;
-    res.status(200).json(nearest);
-    console.log(nearest);
-      
-     /*for( coords of data1){
+    const nearestLat = nearest.latitude;
+    const nearestLong = nearest.longitude;
+   // res.status(200).json(nearest);
+   // console.log(nearest);
+   console.log(nearestLong);
+      const response = [];
+     for( coords of data1){
       const results = coords;
+     // console.log(results);
       let longitude = results.data.location.longitude;
       
-      if(longitude.includes(nearestLong)){
-        console.log(results);
+      if(longitude == nearestLong){
+        console.log(`results:${results}`);
         
         response.push(results);
       }      
-  }*/
-  //res.status(200).json(response);
+  }
+  console.log(`response:${response}`);
+  res.status(200).json(response);
   }
    
   )
