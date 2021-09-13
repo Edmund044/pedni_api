@@ -27,12 +27,12 @@ app.get("/orders/:id",async (req,res,next)=>{
   const id = req.params.id;
   const snapshot = await db.collection("orders")
                 //  .where(admin.firestore.FieldPath.documentId(), "==", id) 
-                  .where("data.mechanic_id", "==", id)
+                  .where("data.number", "==", id)
                   .get()
                   .then( (snapshot) => {
                     const data = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
                     res.status(200).json(data); 
-                    console.log(data.email);
+                   // console.log(data.data.number);
                   }
                    
                   )
