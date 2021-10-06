@@ -5,7 +5,6 @@ require('dotenv').config();
 const admin = require('../../../../firebase/database');
 const db = admin.firestore();
 
-
 //get about 
 app.get("/mechanics",async (req,res,next)=>{
   const snapshot = await db.collection("users")
