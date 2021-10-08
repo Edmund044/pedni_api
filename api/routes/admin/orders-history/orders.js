@@ -71,7 +71,7 @@ const geolib = require('geolib');
   //});
 //get about 
 app.get("/orders",async (req,res,next)=>{
-  const snapshot = await db.collection("orders")
+  const snapshot = await db.collection("orders2")
                   .get()
                   .then( (snapshot) => {
                     const data = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
@@ -88,7 +88,7 @@ app.get("/orders",async (req,res,next)=>{
 //get specific
 app.get("/orders/:id",async (req,res,next)=>{
   const id = req.params.id;
-  const snapshot = await db.collection("orders")
+  const snapshot = await db.collection("orders2")
                  .where(admin.firestore.FieldPath.documentId(), "==", id) 
                  // .where("id", "==", id)
                   .get()
@@ -107,7 +107,7 @@ app.get("/orders/:id",async (req,res,next)=>{
 //post about
 app.post("/orders",async (req,res,next) =>{
   const data = req.body;
-    let snapshot= await db.collection("orders")
+    let snapshot= await db.collection("orders2")
         .add(data)
         .then(
            (snapshot) => {
@@ -131,7 +131,7 @@ app.put("/orders",async (req,res,next)=>{
     const id = req.body.id;
     delete req.body.id;
     const data = req.body;
-    let snapshot= await db.collection("orders")
+    let snapshot= await db.collection("orders2")
         .doc(id)
         .update({
           data:data      
@@ -153,7 +153,7 @@ app.put("/orders",async (req,res,next)=>{
 app.delete("/orders/:id",async (req,res,next) =>{
   const id = req.params.id;
   //const data = req.body;
-  let snapshot= await db.collection("orders")
+  let snapshot= await db.collection("orders2")
       .doc(id)
       .delete()
       .then(
