@@ -11,9 +11,12 @@ app.use(morgan('dev'));
 //const  customersNotification = require('./routes/customer/notification/notification');
 const  mechanicProfile = require('./routes/mechanic/profile/profile');
 const  mechanicOrders = require('./routes/mechanic/orders/orders');
+const  mechanicOrdersHistory = require('./routes/mechanic/orders-history/orders');
 const  mechanicLocation = require('./routes/mechanic/location/location');
 const  customerOrders = require('./routes/customer/orders/orders');
+const  customerOrdersHistory = require('./routes/customer/orders-history/orders');
 const  adminServices = require('./routes/admin/services/services');
+const  adminOrdersHistory = require('./routes/admin/orders-history/orders');
 const  customerReviews = require('./routes/customer/reviews/reviews');
 app.use(cors({ origin: true }));
 app.use(bodyParser.urlencoded({
@@ -46,9 +49,12 @@ app.use("/api/customers/statistics", customersStatistics);
 */
 app.use("/mechanicProfile", mechanicProfile);
 app.use("/mechanicOrders", mechanicOrders);
+app.use("/mechanicOrdersHistory",mechanicOrdersHistory);
 app.use("/mechanicLocation", mechanicLocation);
 app.use("/customerOrders", customerOrders);
+app.use("/customerOrdersHistory", customerOrdersHistory);
 app.use("/adminServices", adminServices);
+app.use("/adminOrdersHistory", adminOrdersHistory);
 app.use("/customerReviews", customerReviews);
 app.get("/api/customers/cropss",(req, res, next) => {
   res.send("Hi there");
