@@ -26,6 +26,7 @@
     "firebase": "^8.8.0",
     "geofire": "^5.2.0",
     "geolib": "^3.3.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "prettyjson": "^1.2.1"
   }
 }
