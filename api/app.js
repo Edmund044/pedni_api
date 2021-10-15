@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 app.use(morgan('dev'));
-
+require('dotenv').config();
 //const  customersAuthentication = require('./routes/customer/authentication/authentication');
 //const  customersHarvest = require('./routes/customer/harvest/harvest');
 ///const  customersCrops = require('./routes/customer/crops/crops');
@@ -19,6 +19,8 @@ const  customerOrdersHistory = require('./routes/customer/orders-history/orders'
 const  adminServices = require('./routes/admin/services/services');
 const  adminOrdersHistory = require('./routes/admin/orders-history/orders');
 const  customerReviews = require('./routes/customer/reviews/reviews');
+//mpesa
+const mpesa = require('../mpesa/mpesa');
 app.use(cors({ origin: true }));
 app.use(bodyParser.urlencoded({
     extended: true
@@ -58,6 +60,8 @@ app.use("/customerOrdersHistory", customerOrdersHistory);
 app.use("/adminServices", adminServices);
 app.use("/adminOrdersHistory", adminOrdersHistory);
 app.use("/customerReviews", customerReviews);
+//mpesa
+app.use('/mpesa',mpesa);
 app.get("/api/customers/cropss",(req, res, next) => {
   res.send("Hi there");
 });
