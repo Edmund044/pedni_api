@@ -27,6 +27,7 @@
     "geofire": "^5.2.0",
     "geolib": "^3.3.1",
     "morgan": "^1.10.0",
+    "mpesa-api": "^3.0.2",
     "prettyjson": "^1.2.1"
   }
 }
