@@ -65,20 +65,7 @@ class MpesaController {
         let transaction_desc = "Payment for successful match with the closest mechanic.";
 
         try {
-            let {data2} =  axios.post("https://quick-garage-api.herokuapp.com/customerOrders/orders",{
-                "BusinessShortCode":bs_short_code,
-                "Password":password,
-                "Timestamp":timestamp,
-                "TransactionType":transcation_type,
-                "Amount":amount,
-                "PartyA":partyA,
-                "PartyB":partyB,
-                "PhoneNumber":phoneNumber,
-                "CallBackURL":callBackUrl,
-                "AccountReference":accountReference,
-                "TransactionDesc":transaction_desc
-            }).catch(console.log);
-            
+         
             let {data} = await axios.post(url,{
                 "BusinessShortCode":bs_short_code,
                 "Password":password,
@@ -117,8 +104,7 @@ class MpesaController {
     lipaNaMpesaOnlineCallback(req,res){
 
         //Get the transaction description
-        let message = req.body.Body.stkCallback['ResultDesc'];
-
+        let message = req.body.Body.stkCallback['ResultDesc'];       
         return res.send({
             success:true,
             message
