@@ -60,9 +60,9 @@ class MpesaController {
         let partyA = "254701376319"; //should follow the format:2547xxxxxxxx
         let partyB = process.env.lipa_na_mpesa_shortcode;
         let phoneNumber = "254701376319"; //should follow the format:2547xxxxxxxx
-        let callBackUrl = "http://566e-102-167-42-108.ngrok.io/mpesa/lipa-na-mpesa-callback";
-        let accountReference = "lipa-na-mpesa-tutorial";
-        let transaction_desc = "Testing lipa na mpesa functionality";
+        let callBackUrl = "https://quick-garage-api.herokuapp.com/mpesa/lipa-na-mpesa-callback";
+        let accountReference = "INEX TENDER DOTE";
+        let transaction_desc = "Payment for successful match with the closest mechanic.";
 
         try {
 
