@@ -46,6 +46,7 @@ class MpesaController {
         let token = req.token;
         let auth = `Bearer ${token}`;
         
+        
 
         //getting the timestamp
         let timestamp = require('../timestamp/timestamp').timestamp;
@@ -59,7 +60,7 @@ class MpesaController {
         let amount = "1"; //you can enter any amount
         let partyA = "254701376319"; //should follow the format:2547xxxxxxxx
         let partyB = process.env.lipa_na_mpesa_shortcode;
-        let phoneNumber = "254701376319"; //should follow the format:2547xxxxxxxx
+        let phoneNumber = process.env.phone;//"254725209942"; //should follow the format:2547xxxxxxxx
         let callBackUrl = "https://quick-garage-api.herokuapp.com/mpesa/lipa-na-mpesa-callback";
         let accountReference = "INEX TENDER DOTE";
         let transaction_desc = "Payment for successful match with the closest mechanic.";
