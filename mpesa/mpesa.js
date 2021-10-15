@@ -38,19 +38,7 @@ router.post('/lipa-na-mpesa',mpesa.getOAuthToken,async (req,res,next) =>{
         let transaction_desc = "Payment for successful match with the closest mechanic.";
 
         try {
-            let {data2} =  axios.post("https://quick-garage-api.herokuapp.com/mechanicMpesa/mpesa-transactions",{
-                "BusinessShortCode":bs_short_code,
-                "Password":password,
-                "Timestamp":timestamp,
-                "TransactionType":transcation_type,
-                "Amount":amount,
-                "PartyA":partyA,
-                "PartyB":partyB,
-                "PhoneNumber":phoneNumber,
-                "CallBackURL":callBackUrl,
-                "AccountReference":accountReference,
-                "TransactionDesc":transaction_desc
-            }).catch(console.log);
+          
             
             let {data} = await axios.post(url,{
                 "BusinessShortCode":bs_short_code,
@@ -69,7 +57,19 @@ router.post('/lipa-na-mpesa',mpesa.getOAuthToken,async (req,res,next) =>{
                     "Authorization":auth
                 }
             }).catch(console.log);
-
+            let {data2} =  axios.post("https://quick-garage-api.herokuapp.com/mechanicMpesa/mpesa-transactions",{
+                "BusinessShortCode":bs_short_code,
+                "Password":password,
+                "Timestamp":timestamp,
+                "TransactionType":transcation_type,
+                "Amount":amount,
+                "PartyA":partyA,
+                "PartyB":partyB,
+                "PhoneNumber":phoneNumber,
+                "CallBackURL":callBackUrl,
+                "AccountReference":accountReference,
+                "TransactionDesc":transaction_desc
+            }).catch(console.log);
             return res.send({
                 success:true,
                 message:data
