@@ -7,8 +7,8 @@ const db = admin.firestore();
 
 
 //get about 
-app.get("/reviews",async (req,res,next)=>{
-  const snapshot = await db.collection("reviews")
+app.get("/news",async (req,res,next)=>{
+  const snapshot = await db.collection("news")
                   .get()
                   .then( (snapshot) => {
                     const data = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
@@ -23,9 +23,9 @@ app.get("/reviews",async (req,res,next)=>{
                   });
 });
 //post about
-app.post("/reviews",async (req,res,next) =>{
+app.post("/news",async (req,res,next) =>{
   const data = req.body;
-    let snapshot= await db.collection("reviews")
+    let snapshot= await db.collection("news")
         .add(data)
         .then(
            (snapshot) => {
@@ -42,11 +42,11 @@ app.post("/reviews",async (req,res,next) =>{
 });
 //update about
 
-app.put("/reviews",async (req,res,next)=>{
+app.put("/news",async (req,res,next)=>{
     const id = req.body.id;
     delete req.body.id;
     const data = req.body;
-    let snapshot= await db.collection("reviews")
+    let snapshot= await db.collection("news")
         .doc(id)
         .update({
         data
@@ -65,11 +65,11 @@ app.put("/reviews",async (req,res,next)=>{
 });
 
 //delete about
-app.delete("/reviews",async (req,res,next) =>{
+app.delete("/news",async (req,res,next) =>{
   const id = req.body.id;
   delete req.body.id;
   const data = req.body;
-  let snapshot= await db.collection("reviews")
+  let snapshot= await db.collection("news")
       .doc(id)
       .delete({
       data
