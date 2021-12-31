@@ -22,6 +22,24 @@ app.get("/products",async (req,res,next)=>{
                     res.status(500).json({error:error})                   
                   });
 });
+//getSpecific
+app.get("/products/:id",async (req,res,next)=>{
+  const id = req.params.id;
+  const snapshot = await db.collection("products")
+                  .where(admin.firestore.FieldPath.documentId(), "==", id)
+                  .get()
+                  .then( (snapshot) => {
+                    const data = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
+                    res.status(200).json(data); 
+                    console.log(data);
+                  }
+                   
+                  )
+                  .catch( 
+                    error => {
+                    res.status(500).json({error:error})                   
+                  });
+});
 //post about
 app.post("/products",async (req,res,next) =>{
   const data = req.body;

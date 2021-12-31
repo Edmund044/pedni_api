@@ -16,8 +16,8 @@ const  mechanicLocation = require('./routes/mechanic/location/location');
 const  mechanicMpesa = require('./routes/mechanic/mpesa/mpesa');
 const  customerOrders = require('./routes/customer/orders/orders');
 const  customerOrdersHistory = require('./routes/customer/orders-history/orders');
-const  adminServices = require('./routes/admin/services/services');
-const  adminOrdersHistory = require('./routes/admin/orders-history/orders');
+const  adminProducts = require('./routes/admin/products/products');
+const  adminOrdersHistory = require('./routes/admin/orders/orders');
 const  customerReviews = require('./routes/customer/reviews/reviews');
 //mpesa
 const mpesa = require('../mpesa/mpesa');
@@ -57,7 +57,7 @@ app.use("/mechanicLocation", mechanicLocation);
 app.use("/mechanicMpesa", mechanicMpesa);
 app.use("/customerOrders", customerOrders);
 app.use("/customerOrdersHistory", customerOrdersHistory);
-app.use("/adminServices", adminServices);
+app.use("/adminProducts", adminProducts);
 app.use("/adminOrdersHistory", adminOrdersHistory);
 app.use("/customerReviews", customerReviews);
 //mpesa
