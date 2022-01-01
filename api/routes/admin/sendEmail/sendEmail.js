@@ -6,7 +6,7 @@ const admin = require('../../../../firebase/database');
 const db = admin.firestore();
 
 
-app.post("/orders",async (req,res,next) =>{
+app.post("/email",async (req,res,next) =>{
     const data = req.body;
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -18,7 +18,7 @@ app.post("/orders",async (req,res,next) =>{
       
       var mailOptions = {
         from: 'edmundopiyo@gmail.com',
-        to: req.body.data.reciepient,
+        to: req.body.data.recipient,
         subject: req.body.data.subject,
         text: req.body.data.text
       };

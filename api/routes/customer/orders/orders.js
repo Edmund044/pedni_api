@@ -23,10 +23,29 @@ app.get("/orders",async (req,res,next)=>{
                   });
 });
 //getSpecific
-app.get("/orders/:id",async (req,res,next)=>{
+app.get("/products/:id",async (req,res,next)=>{
   const id = req.params.id;
-  const snapshot = await db.collection("orders")
+  const snapshot = await db.collection("products")
                   .where(admin.firestore.FieldPath.documentId(), "==", id)
+                  .get()
+                  .then( (snapshot) => {
+                    const data = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
+                    res.status(200).json(data); 
+                    console.log(data);
+                  }
+                   
+                  )
+                  .catch( 
+                    error => {
+                    res.status(500).json({error:error})                   
+                  });
+});
+//searchSpecific
+app.get("/ordersSearch/:id",async (req,res,next)=>{
+  const id = req.params.id;
+  const snapshot = await db.collection("products")
+                 // .where(admin.firestore.FieldPath.documentId(), "==", id)
+                  .where("data.phone_number", "==", id)
                   .get()
                   .then( (snapshot) => {
                     const data = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));

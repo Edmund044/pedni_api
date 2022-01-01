@@ -25,8 +25,37 @@ app.get("/products",async (req,res,next)=>{
 //getSpecific
 app.get("/products/:id",async (req,res,next)=>{
   const id = req.params.id;
+  const response = [];
   const snapshot = await db.collection("products")
                   .where(admin.firestore.FieldPath.documentId(), "==", id)
+                  .get()
+                  .then( (snapshot) => {
+                   // const data = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
+                    //res.status(200).json(data); 
+                    //console.log(data);
+                    //response.push(data);
+                    const datas = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));
+                    for (let data of datas) {
+                      let name = data.product_name.toLowerCase();              
+                      if (name.includes(id)) {
+                          response.push(result);
+                      }
+                    }
+                    //return res.status(200).json(response);
+                  }
+                   
+                  )
+                  .catch( 
+                    error => {
+                    res.status(500).json({error:error})                   
+                  });
+});
+//searchSpecific
+app.get("/productsSearch/:id",async (req,res,next)=>{
+  const id = req.params.id;
+  const snapshot = await db.collection("products")
+                 // .where(admin.firestore.FieldPath.documentId(), "==", id)
+                  .where("data.product_name", "==", id)
                   .get()
                   .then( (snapshot) => {
                     const data = snapshot.docs.map((doc) => ({ id:doc.id,...doc.data() }));

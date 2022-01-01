@@ -18,6 +18,8 @@ const  customerOrders = require('./routes/customer/orders/orders');
 const  customerOrdersHistory = require('./routes/customer/orders-history/orders');
 const  adminProducts = require('./routes/admin/products/products');
 const  adminOrdersHistory = require('./routes/admin/orders/orders');
+const  adminSendEmail = require('./routes/admin/sendEmail/sendEmail');
+const  adminSendText = require('./routes/admin/sendText/sendText');
 const  customerReviews = require('./routes/customer/reviews/reviews');
 //mpesa
 const mpesa = require('../mpesa/mpesa');
@@ -59,6 +61,8 @@ app.use("/customerOrders", customerOrders);
 app.use("/customerOrdersHistory", customerOrdersHistory);
 app.use("/adminProducts", adminProducts);
 app.use("/adminOrdersHistory", adminOrdersHistory);
+app.use("/adminSendEmail", adminSendEmail);
+app.use("/adminSendText", adminSendText);
 app.use("/customerReviews", customerReviews);
 //mpesa
 app.use('/mpesa',mpesa);
