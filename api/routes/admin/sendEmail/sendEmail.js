@@ -32,3 +32,4 @@ app.post("/email",async (req,res,next) =>{
       }); 
 
 });
+module.exports = app;

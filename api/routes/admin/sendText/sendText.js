@@ -1,3 +1,6 @@
+const express = require('express');
+const app = express();
+require('dotenv').config();
 const axios = require('axios').default;
 app.post("/text",async (req,res,next) =>{
     const phone = req.body.data.phone;
@@ -8,4 +11,5 @@ app.post("/text",async (req,res,next) =>{
     "message":req.body.message,
     "phone":req.body.phone
                       });
-}
+});
+module.exports = app;
